@@ -1,0 +1,6 @@
+{
+  "name": "ExamPilot AI",
+  "description": "AI-powered exam solver and tutor for WAEC, JAMB, and NECO students. Instant solutions with step-by-step explanations.",
+  "requestFramePermissions": ["camera", "microphone"],
+  "majorCapabilities": ["AI Solver", "OCR", "Adaptive Learning"]
+}

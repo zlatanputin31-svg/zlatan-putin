@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --color-brand: #2563eb;
+  --color-slate-50: #f8fafc;
+  --color-slate-100: #f1f5f9;
+  --color-slate-200: #e2e8f0;
+  --color-slate-800: #1e293b;
+  --color-slate-900: #0f172a;
+}
+
+@layer base {
+  body {
+    @apply font-sans bg-slate-100 text-slate-800 antialiased overflow-x-hidden;
+    background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+}
+
+.mobile-container {
+  @apply max-w-md mx-auto min-h-screen bg-white relative flex flex-col shadow-[0_25px_50px_-12px_rgba(0,0,0,0.1)] border-x border-slate-200;
+}
+
+.nav-blur {
+  @apply backdrop-blur-md bg-white/90 border-t border-slate-100;
+}
+
+.card-outline {
+  @apply border-[1.5px] border-slate-200 rounded-2xl p-4 bg-white transition-all active:scale-[0.98];
+}
+
+.badge {
+  @apply text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider;
+}
+
+.btn-primary {
+  @apply bg-brand text-white rounded-xl font-semibold transition-opacity active:opacity-80;
+}

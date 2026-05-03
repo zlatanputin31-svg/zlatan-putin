@@ -1,0 +1,62 @@
+{
+  "entities": {
+    "User": {
+      "title": "User Profile",
+      "description": "Stores core student information and exam preferences.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "displayName": { "type": "string" },
+        "email": { "type": "string" },
+        "examType": { "type": "string", "enum": ["WAEC", "JAMB", "NECO", "General"] },
+        "level": { "type": "string", "enum": ["Beginner", "Intermediate", "Advanced"] },
+        "points": { "type": "integer" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "examType"]
+    },
+    "QuestionLog": {
+      "title": "Solved Question",
+      "description": "History of solved questions for a specific user.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "questionText": { "type": "string" },
+        "subject": { "type": "string" },
+        "topic": { "type": "string" },
+        "solution": { "type": "string" },
+        "explanation": { "type": "string" },
+        "understood": { "type": "boolean" },
+        "timestamp": { "type": "string", "format": "date-time" },
+        "imageUrl": { "type": "string" }
+      },
+      "required": ["questionText", "subject", "solution"]
+    },
+    "TopicStat": {
+      "title": "Performance Stat",
+      "description": "Aggregated analytics for subjects and topics.",
+      "type": "object",
+      "properties": {
+        "subject": { "type": "string" },
+        "topic": { "type": "string" },
+        "correctCount": { "type": "integer" },
+        "totalCount": { "type": "integer" },
+        "understandingRate": { "type": "number" }
+      }
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "User profile document."
+    },
+    "/users/{userId}/history/{questionId}": {
+      "schema": "QuestionLog",
+      "description": "History of questions solved by the student."
+    },
+    "/users/{userId}/stats/{statId}": {
+      "schema": "TopicStat",
+      "description": "Aggregated performance data per subject/topic."
+    }
+  }
+}
